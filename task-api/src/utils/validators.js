@@ -18,6 +18,11 @@ const validateCreateTask = (body) => {
 };
 
 const validateUpdateTask = (body) => {
+
+  if(!body || Object.keys(body).length===0){
+    return "Updated data can not be empty";    
+  }
+
   if (body.title !== undefined && (typeof body.title !== 'string' || body.title.trim() === '')) {
     return 'title must be a non-empty string';
   }

@@ -80,6 +80,21 @@ const _reset = () => {
   tasks = [];
 };
 
+const assigntask = (id, assignee) => {
+  if (!assignee || assignee.trim() === "") {
+  return res.status(400).json({ error: "Assignee required" });
+}
+  const task = tasks.find(t => t.id === id);
+
+  if (!task) {
+
+    return null;
+  }
+
+  task.assignee = assignee;
+  return task;
+};
+
 module.exports = {
   getAll,
   findById,
@@ -91,4 +106,5 @@ module.exports = {
   remove,
   completeTask,
   _reset,
+  assigntask
 };
